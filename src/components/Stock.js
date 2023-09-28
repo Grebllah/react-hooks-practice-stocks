@@ -1,12 +1,12 @@
 import React from "react";
 
-function Stock() {
+function Stock(props) {
   return (
     <div>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">{"Compant Name"}</h5>
-          <p className="card-text">{"Stock Price"}</p>
+          <h5 className="card-title">{props.ticker}</h5>
+          <p className="card-text">{props.price}</p>
         </div>
       </div>
     </div>
