@@ -1,15 +1,16 @@
 import React from "react";
-
-function Stock(props) {
+//when clicked, change the state to "owned"
+function Stock({stock, handleClick}) {
+  const {id, name, ticker, price, type} = stock
   return (
-    <div>
+    <div onClick={() => handleClick(stock)}>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">{props.ticker}</h5>
-          <p className="card-text">{props.price}</p>
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text">{price}</p>
         </div>
       </div>
     </div>
-  );
-}
+  )
+};
 export default Stock;
