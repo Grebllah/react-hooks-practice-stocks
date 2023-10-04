@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 function MainContainer() {
   const [stocks, setStocks] = useState([])
   const [portfolio, setPortfolio] = useState([])
-  const [sortForm, setSortForm] = useState("Alphabetically")
+  const [sortForm, setSortForm] = useState(null)
   useEffect(()=>{
     fetch ("http://localhost:3001/stocks")
     .then ((res) => res.json())
@@ -14,6 +14,7 @@ function MainContainer() {
       setStocks(data)
     })
   }, []);
+  
   const addStock = (stockToAdd) => {
     setPortfolio(portfolio => [...portfolio, stockToAdd])
     setStocks(stocks => stocks.filter(stock=>stock.id !== stockToAdd.id))
@@ -24,27 +25,23 @@ function MainContainer() {
     setStocks(stocks => [...stocks, stockToRemove])
   }
 
-  const sortByTicker = (stocks) => {
-    stocks.sort()
-  }
-
-  const sortAlphabetically = () => {}
+const setSortState = (e) => {
+  setSortForm(e.target.value)
+}
 
   return (
     <div>
       <SearchBar
-        stocks={stocks}
         sortForm= {sortForm}
         setSortForm= {setSortForm}
-        sortByTicker= {sortByTicker}
-        sortAlphabetically={sortAlphabetically}
+        setSortState={setSortState}
       />
       <div className="row">
         <div className="col-8">
-          <StockContainer addStock={addStock} stocks={stocks}/>
+          <StockContainer sortForm= {sortForm} addStock={addStock} stocks={stocks}/>
         </div>
         <div className="col-4">
-          <PortfolioContainer removeStock={removeStock} portfolio={portfolio}/>
+          <PortfolioContainer sortForm= {sortForm} removeStock={removeStock} portfolio={portfolio}/>
         </div>
       </div>
     </div>

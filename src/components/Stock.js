@@ -1,7 +1,7 @@
 import React from "react";
 //when clicked, change the state to "owned"
 function Stock({stock, handleClick}) {
-  const {id, name, ticker, price, type} = stock
+  const { name, price } = stock
   return (
     <div onClick={() => handleClick(stock)}>
       <div className="card">

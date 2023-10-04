@@ -1,7 +1,10 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer({stocks, addStock}) {
+function StockContainer({stocks, addStock, sortForm}) {
+  if(sortForm==="Alphabetically"){
+    stocks.sort((a,b) => a.name.charCodeAt(0) - b.name.charCodeAt(0))
+  }
   const mappedStocks = stocks.map((stock)=> <Stock key={stock.id} stock={stock} handleClick={addStock}/>)
   return (
     <div>
