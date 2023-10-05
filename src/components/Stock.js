@@ -1,5 +1,4 @@
 import React from "react";
-//when clicked, change the state to "owned"
 function Stock({stock, handleClick}) {
   const { name, price } = stock
   return (

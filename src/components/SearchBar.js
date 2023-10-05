@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({ setSortForm, setSortState }) {
+function SearchBar({ setSortState, changeFilterState }) {
 
   return (
     <div>
@@ -28,7 +28,8 @@ function SearchBar({ setSortForm, setSortState }) {
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={changeFilterState}>
+          <option value="All">Filter By:</option>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
